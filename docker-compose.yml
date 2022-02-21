@@ -2,24 +2,24 @@ version: '3'
 
 services:
   web:
-    image: mcsm/web
+    image: kagurazakanyaa/mcsm:web
     build:
-      context: .
-      dockerfile: web.dockerfile
+      context: web
+      dockerfile: Dockerfile
     ports:
       - "80:23333"
     volumes:
-      - ./web/data:/ops/mcsmanager/web/data
-      - ./web/logs:/ops/mcsmanager/web/logs
+      - ./data/web/data:/ops/mcsmanager/web/data
+      - ./data/web/logs:/ops/mcsmanager/web/logs
 
   daemon:
-    image: mcsm/daemon
+    image: kagurazakanyaa/mcsm:daemon
     build:
-      context: .
-      dockerfile: daemon.dockerfile
+      context: daemon
+      dockerfile: Dockerfile
     ports:
       - "24444:24444"
     volumes:
-      - ./daemon/data:/ops/mcsmanager/daemon/data
-      - ./daemon/logs:/ops/mcsmanager/daemon/logs
+      - ./data/daemon/data:/ops/mcsmanager/daemon/data
+      - ./data/daemon/logs:/ops/mcsmanager/daemon/logs
       - /var/run/docker.sock:/var/run/docker.sock
