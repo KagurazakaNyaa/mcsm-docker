@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "daemon/version"
+      - ".github/workflows/daemon.yml"
 
 jobs:
   build:
@@ -25,5 +26,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: daemon
-          dockerfile: Dockerfile
+          push: true
           tags: kagurazakanyaa/mcsm:daemon
