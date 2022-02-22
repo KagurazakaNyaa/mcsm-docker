@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${REPO_TOKEN}
 
       - name: Run update script
         run: ./checkupdate.sh
