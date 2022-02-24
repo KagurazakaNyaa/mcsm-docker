@@ -1,6 +1,11 @@
 name: Check upstream update
 
 on:
+  workflow_dispatch:
+    inputs:
+      desc:
+        description: "desc"
+        required: false
   schedule:
     - cron: "0 0 * * *"
 
