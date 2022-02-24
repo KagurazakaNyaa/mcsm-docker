@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${REPO_TOKEN}
+          token: ${{ secrets.REPO_TOKEN }}
 
       - name: Run update script
         run: ./checkupdate.sh
