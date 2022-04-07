@@ -9,8 +9,8 @@ services:
     ports:
       - "80:23333"
     volumes:
-      - ./data/web/data:/ops/mcsmanager/web/data
-      - ./data/web/logs:/ops/mcsmanager/web/logs
+      - ./data/web/data:/opt/mcsmanager/web/data
+      - ./data/web/logs:/opt/mcsmanager/web/logs
 
   daemon:
     image: kagurazakanyaa/mcsm:daemon
@@ -20,6 +20,6 @@ services:
     ports:
       - "24444:24444"
     volumes:
-      - ./data/daemon/data:/ops/mcsmanager/daemon/data
-      - ./data/daemon/logs:/ops/mcsmanager/daemon/logs
+      - ./data/daemon/data:/opt/mcsmanager/daemon/data
+      - ./data/daemon/logs:/opt/mcsmanager/daemon/logs
       - /var/run/docker.sock:/var/run/docker.sock
