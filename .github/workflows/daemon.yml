@@ -3,7 +3,7 @@ name: Build Daemon Docker Image
 on:
   push:
     paths:
-      - "daemon/version"
+      - "daemon/*"
       - ".github/workflows/daemon.yml"
 
 jobs:

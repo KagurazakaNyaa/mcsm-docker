@@ -3,7 +3,7 @@ name: Build Web Docker Image
 on:
   push:
     paths:
-      - "web/version"
+      - "web/*"
       - ".github/workflows/web.yml"
 
 jobs:
