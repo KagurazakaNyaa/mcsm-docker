@@ -1,7 +1,7 @@
 #!/bin/bash
 
-daemon_online_version=`curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Daemon-Production/commits/master | jq -r .sha`
-web_online_version=`curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Web-Production/commits/master | jq -r .sha`
+daemon_online_version=`curl -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Daemon-Production/commits/master | jq -r .sha`
+web_online_version=`curl -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Web-Production/commits/master | jq -r .sha`
 
 daemon_current_version=`cat ./daemon/version`
 web_current_version=`cat ./web/version`
