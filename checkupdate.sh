@@ -9,8 +9,8 @@ web_current_version=`cat ./web/version`
 echo $daemon_online_version > ./daemon/version
 echo $web_online_version > ./web/version
 
-git config user.name github-actions
-git config user.email github-actions@github.com
+git config user.name "github-actions[bot]"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 if [[ $daemon_online_version != $daemon_current_version ]]; then
     git add ./daemon/version
