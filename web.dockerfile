@@ -2,7 +2,7 @@ FROM node:lts
 
 WORKDIR /opt/mcsmanager
 
-COPY ./build/web /opt/mcsmanager/web
+COPY build/web/* /opt/mcsmanager/web
 
 WORKDIR /opt/mcsmanager/web
 

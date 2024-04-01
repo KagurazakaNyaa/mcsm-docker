@@ -2,7 +2,7 @@ FROM node:lts
 
 WORKDIR /opt/mcsmanager
 
-COPY ./build/daemon /opt/mcsmanager/daemon
+COPY build/daemon/* /opt/mcsmanager/daemon
 
 WORKDIR /opt/mcsmanager/daemon
 
