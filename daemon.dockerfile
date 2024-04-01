@@ -8,7 +8,7 @@ FROM node:lts
 
 WORKDIR /opt/mcsmanager/daemon
 
-COPY --from=download /build/daemon/* /opt/mcsmanager/daemon/
+COPY --from=download /build/daemon/ /opt/mcsmanager/daemon/
 
 RUN npm install --production
 

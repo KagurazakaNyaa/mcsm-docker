@@ -8,7 +8,7 @@ FROM node:lts
 
 WORKDIR /opt/mcsmanager/web
 
-COPY --from=download /build/web/* /opt/mcsmanager/web/
+COPY --from=download /build/web/ /opt/mcsmanager/web/
 
 RUN npm install --production
 
