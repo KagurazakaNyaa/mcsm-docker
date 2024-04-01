@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and Push
+      - name: Build and Push Web
         uses: docker/build-push-action@v5
         with:
           file: web.dockerfile
@@ -43,7 +43,7 @@ jobs:
           tags: ${{ steps.meta_web.outputs.tags }}
           labels: ${{ steps.meta_web.outputs.labels }}
 
-      - name: Build and Push
+      - name: Build and Push Daemon
         uses: docker/build-push-action@v5
         with:
           file: daemon.dockerfile
