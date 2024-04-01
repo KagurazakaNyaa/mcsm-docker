@@ -28,7 +28,7 @@ jobs:
         run: ./prepare.sh
         shell: bash
         env:
-          VERSION_TAG: ${{ github.action_ref }}
+          VERSION_TAG: ${{ github.ref_name }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
