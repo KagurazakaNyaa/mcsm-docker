@@ -1,25 +1,16 @@
 #!/bin/bash
-
-daemon_online_version=`curl -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Daemon-Production/commits/master | jq -r .sha`
-web_online_version=`curl -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/MCSManager/MCSManager-Web-Production/commits/master | jq -r .sha`
-
-daemon_current_version=`cat ./daemon/version`
-web_current_version=`cat ./web/version`
-
-echo $daemon_online_version > ./daemon/version
-echo $web_online_version > ./web/version
+version=$(curl --silent -H "Authorization: Bearer ${GITHUB_TOKEN}" "https://api.github.com/repos/MCSManager/MCSManager/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
+currentversion=$(cat currentversion)
+echo "currentversion:$currentversion version:$version"
+echo "$version" >currentversion
+if [[ "$currentversion" == "$version" ]]; then
+    exit
+fi
 
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-if [[ $daemon_online_version != $daemon_current_version ]]; then
-    git add ./daemon/version
-    git commit -m "Update daemon"
-fi
-
-if [[ $web_online_version != $web_current_version ]]; then
-    git add ./web/version
-    git commit -m "Update web"
-fi
-
+git add currentversion Dockerfile
+git commit -a -m "Auto Update to MCSManager $version"
+git tag -f "$version"
 git push
+git push origin --tags -f

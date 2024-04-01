@@ -2,14 +2,14 @@ FROM node:lts
 
 WORKDIR /opt/mcsmanager
 
-RUN git clone https://github.com/MCSManager/MCSManager-Web-Production.git web --depth=1
+COPY ./build/web /opt/mcsmanager/web
 
 WORKDIR /opt/mcsmanager/web
 
-RUN npm install
+RUN npm install --production
 
 EXPOSE 23333
 
 VOLUME ["/opt/mcsmanager/web/data", "/opt/mcsmanager/web/logs"]
 
-CMD [ "app.js" ]
+CMD [ "app.js", "--max-old-space-size=8192" ]
