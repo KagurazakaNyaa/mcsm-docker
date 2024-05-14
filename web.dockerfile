@@ -2,7 +2,7 @@ FROM alpine:3 AS download
 RUN apk add --no-cache curl tar gzip
 WORKDIR /build
 ARG VERSION_TAG
-RUN curl -L https://github.com/MCSManager/MCSManager/releases/download/${VERSION_TAG}/MCSManager-v10-linux-x64.tar.gz | tar -xvz
+RUN curl -L https://github.com/MCSManager/MCSManager/releases/download/${VERSION_TAG}/mcsmanager_linux_release.tar.gz  | tar -xvz
 
 FROM node:lts
 
